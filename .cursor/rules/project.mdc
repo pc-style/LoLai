@@ -1,0 +1,26 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# League of Legends Match Analysis System
+
+## Match Viewing Flow
+- Users search for their summoner name on the [session-summaries page](mdc:src/app/session-summaries/page.tsx)
+- Clicking on a match navigates to the [match details page](mdc:src/app/match/[id]/page.tsx) rather than showing a modal
+- Match details are loaded based on URL parameters (match ID, region, and PUUID)
+
+## AI Analysis Implementation
+- The match analysis is generated through [match-analysis.ts](mdc:src/lib/match-analysis.ts)
+- Analysis is divided into two parts using markdown:
+  1. Tips (bullet points of actionable advice)
+  2. Summary (brief overview of performance)
+- The analysis is rendered using ReactMarkdown with proper formatting in the match details page
+
+## Key Components
+- **Session Summaries**: Shows match history and overview statistics
+- **Match Details Page**: Shows detailed information about a specific match including:
+  - Overview tab with basic stats
+  - Performance tab with detailed metrics
+  - Vision control tab with ward statistics
+  - AI Analysis tab with markdown-formatted tips and summary
