@@ -1,12 +1,12 @@
 ---
 description: 
 globs: 
-alwaysApply: true
+alwaysApply: false
 ---
 # League of Legends Match Analysis System
 
 ## Match Viewing Flow
-- Users search for their summoner name on the [session-summaries page](mdc:src/app/session-summaries/page.tsx)
+- Users search for their summoner name on the 
 - Clicking on a match navigates to the [match details page](mdc:src/app/match/[id]/page.tsx) rather than showing a modal
 - Match details are loaded based on URL parameters (match ID, region, and PUUID)
 

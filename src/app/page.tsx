@@ -2,9 +2,8 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { FiMessageSquare, FiGithub, FiZap, FiTarget } from "react-icons/fi";
+import { FiMessageSquare, FiZap, FiTarget } from "react-icons/fi";
 import { useState, useEffect, useRef } from "react";
-import { ThemeToggle } from "@/components/theme-toggle";
 import SettingsButton from "@/components/SettingsButton";
 
 export default function Home() {

@@ -17,7 +17,6 @@ import { ArrowLeft } from "lucide-react";
 import { useTheme } from 'next-themes';
 import { themes } from '@/components/ThemeProvider';
 import { Switch } from "@/components/ui/switch";
-import { motion } from "framer-motion";
 
 const REGIONS = [
   { value: 'BR1', label: 'Brazil', flag: '🇧🇷' },

@@ -1,4 +1,4 @@
-import { MatchStats, MatchAnalysis, MatchHistoryParams } from '@/types/match';
+import { MatchStats, MatchHistoryParams } from '@/types/match';
 import { getSummonerByName, getMatchHistory, getMatchDetails, REGIONS } from './riot-api';
 
 export async function fetchMatchHistory({

@@ -4,7 +4,7 @@ import { Input } from "./ui/input";
 import { Card } from "./ui/card";
 import { motion } from "framer-motion";
 import { getSummonerByName, getMatchHistory, getMatchDetails, calculateDetailedStats } from "@/lib/riot-api";
-import { FiSearch, FiTrendingUp, FiAward, FiEye, FiClock, FiTarget, FiShield } from "react-icons/fi";
+import { FiSearch, FiTrendingUp, FiAward, FiClock, FiTarget, FiShield } from "react-icons/fi";
 
 interface DetailedStats {
   averageKDA: {
@@ -57,7 +57,18 @@ export function CoachingDashboard() {
     
     try {
       // Get summoner data
-      const summoner = await getSummonerByName(summonerName);
+      // Split summonerName if it contains a tag like "name#tag"
+      let gameName = summonerName;
+      let tagLine = 'NA1'; // Default tag
+      const platform = 'na1'; // Default platform
+      
+      if (summonerName.includes('#')) {
+        const parts = summonerName.split('#');
+        gameName = parts[0];
+        tagLine = parts[1];
+      }
+      
+      const summoner = await getSummonerByName(gameName, tagLine, platform);
       
       // Get match history
       const matchIds = await getMatchHistory(summoner.puuid, 20);

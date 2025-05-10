@@ -1,4 +1,3 @@
-import { env } from "./env";
 import { getRiotApiKey } from "./env";
 
 // Remove the direct API key access
@@ -122,7 +121,7 @@ interface DetailedStats extends BasicStats {
   };
 }
 
-async function makeRiotRequest(url: string): Promise<any> {
+async function makeRiotRequest<T>(url: string): Promise<T> {
   const apiKey = getRiotApiKey();
   
   if (!apiKey) {
@@ -162,14 +161,14 @@ export async function getSummonerByName(
 ): Promise<SummonerData> {
   try {
     // First get the PUUID using the Riot ID endpoint
-    const accountData = await makeRiotRequest(
+    const accountData = await makeRiotRequest<{puuid: string}>(
       `https://${getRegionalRoute(platform)}.api.riotgames.com/riot/account/v1/accounts/by-riot-id/${encodeURIComponent(gameName)}/${encodeURIComponent(tagLine)}`
     );
     
     const puuid = accountData.puuid;
 
     // Then get the summoner data using the PUUID
-    return await makeRiotRequest(
+    return await makeRiotRequest<SummonerData>(
       `https://${platform}.api.riotgames.com/lol/summoner/v4/summoners/by-puuid/${puuid}`
     );
   } catch (error) {
@@ -204,7 +203,7 @@ export async function getMatchHistory(
   region: string = 'americas'
 ): Promise<string[]> {
   try {
-    return await makeRiotRequest(
+    return await makeRiotRequest<string[]>(
       `https://${region}.api.riotgames.com/lol/match/v5/matches/by-puuid/${puuid}/ids?count=${count}`
     );
   } catch (error) {

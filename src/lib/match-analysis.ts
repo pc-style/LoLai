@@ -1,5 +1,3 @@
-import { MatchStats, MatchAnalysis, MatchHistoryParams } from '@/types/match';
-import { getSummonerByName, getMatchHistory, getMatchDetails, REGIONS } from './riot-api';
 import { sendChatMessage } from './chat-service';
 import { AI_MODELS } from './api-config';
 import { getGeminiApiKey } from './env';

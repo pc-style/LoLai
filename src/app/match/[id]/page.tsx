@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { getMatchDetails } from '@/lib/riot-api';
 import { generateMatchAnalysis } from '@/lib/match-analysis';
-import { BarChart, LineChart, Bar, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import 'recharts';
 import { Loader2, ArrowLeft } from "lucide-react";
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
@@ -159,6 +159,7 @@ export default function MatchDetailsPage() {
     if (routeParams.matchId && routeParams.region && routeParams.puuid) {
       loadMatchDetails();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [routeParams]);
 
   const loadMatchDetails = async () => {
@@ -355,24 +356,6 @@ export default function MatchDetailsPage() {
   }
 
   if (!matchData) return null;
-
-  const performanceData = [
-    {
-      name: 'Damage',
-      value: matchData.playerStats.totalDamageDealt,
-      average: matchData.teamStats.totalDamage / 5
-    },
-    {
-      name: 'Gold',
-      value: matchData.playerStats.goldEarned,
-      average: matchData.teamStats.totalGold / 5
-    },
-    ...(matchData.gameMode !== 'ARAM' && matchData.gameMode !== 'ARENA' ? [{
-      name: 'Vision',
-      value: matchData.playerStats.visionScore,
-      average: 20 // Placeholder average
-    }] : [])
-  ];
 
   return (
     <main 

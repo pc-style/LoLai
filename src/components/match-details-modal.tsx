@@ -61,6 +61,7 @@ export function MatchDetailsModal({ isOpen, onClose, matchId, region, puuid }: M
     if (isOpen && matchId) {
       loadMatchDetails();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen, matchId]);
 
   const loadMatchDetails = async () => {

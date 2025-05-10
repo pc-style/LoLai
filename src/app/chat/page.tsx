@@ -5,7 +5,7 @@ import { CoachingDashboard } from "@/components/coaching-dashboard";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { FiArrowLeft, FiCommand, FiGithub, FiZap, FiBarChart2 } from "react-icons/fi";
+import { FiArrowLeft, FiZap, FiBarChart2 } from "react-icons/fi";
 import { useEffect, useState, useRef } from "react";
 import { ThemeToggle } from "@/components/theme-toggle";
 import SettingsButton from "@/components/SettingsButton";
